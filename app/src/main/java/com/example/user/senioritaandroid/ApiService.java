@@ -25,14 +25,6 @@ public interface ApiService {
                                @Header("Content-Type") String contentType,
                                @Header("noToken") Boolean noToken);
 
-//    @GET("accounts/{accountId}")
-//    Call<AccountInfo> getAccountInfo(@Header("Authorization") String authKey,
-//                                     @Path("accountId") String accountId);
-
-    @GET("person/{person_id}")
-    Single<Student> getPersonData(@Path("person_id") int personId,
-                                  @Query("api_key") String apiKey);
-
     @GET("/bake/getAndroidUser")
     Single<User> getUser();
 }
