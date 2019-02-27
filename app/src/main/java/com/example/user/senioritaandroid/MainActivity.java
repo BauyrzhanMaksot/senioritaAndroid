@@ -1,20 +1,25 @@
 package com.example.user.senioritaandroid;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.net.SocketTimeoutException;
 
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.HttpException;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -41,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new SingleObserver<User>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        // we'll come back to this in a moment
                         Log.v("disposable", d.toString());
                     }
-
                     @Override
                     public void onSuccess(User user) {
                         Log.v("success", user.toString());
@@ -55,7 +58,36 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        loginB = (Button)findViewById(R.id.button);
+        Single<Token> token = apiService.loginAccount("password", "test0", "12345678", getAuthorizationHeader(), "application/x-www-form-urlencoded; charset=utf-8",true);
+        token.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Token>() {
+                               @Override
+                               public void onSubscribe(Disposable d) {
+                                   Log.v("DISPOSABLE:", d.toString());
+                               }
+
+                               @Override
+                               public void onSuccess(Token token) {
+                                   Log.v("SUCCESS:", token.toString());
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   if (e instanceof HttpException) {
+                                       ResponseBody responseBody = ((HttpException)e).response().errorBody();
+                                       Log.e("ERROR", e.toString());
+                                       Log.e("ERROR", responseBody.toString());
+                                   } else if (e instanceof SocketTimeoutException) {
+                                       Log.e("ERROR", "SocketTimeout");
+                                   } else if (e instanceof IOException) {
+                                       Log.e("ERROR", "IOE");
+                                   } else {
+                                       Log.e("ERROR", "UNK");
+                                   }
+                               }
+                           });
+        loginB = (Button) findViewById(R.id.button);
         userNameE = (EditText)findViewById(R.id.editText);
         passwordE = (EditText)findViewById(R.id.editText2);
 
@@ -71,5 +103,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public static String getAuthorizationHeader() {
+        String credential =  "client:secret";
+        return "Basic " + Base64.encodeToString(credential.getBytes(), Base64.NO_WRAP);
     }
 }

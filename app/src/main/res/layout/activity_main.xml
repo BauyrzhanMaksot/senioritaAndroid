@@ -14,13 +14,11 @@
         android:inputType="text"
         android:focusable = "true" />
 
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:id="@+id/editText2" />
-
 
     <Button
         android:id="@+id/button"
