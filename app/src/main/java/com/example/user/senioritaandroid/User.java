@@ -18,8 +18,12 @@ public class User {
     private String email;
 
     @Expose
-    @SerializedName("roleId")
-    private Long roleId;
+    @SerializedName("firstName")
+    private String firstName;
+
+    @Expose
+    @SerializedName("lastName")
+    private String lastName;
 
     public String getLogin() {
         return login;
@@ -45,12 +49,20 @@ public class User {
         this.email = email;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
@@ -59,7 +71,8 @@ public class User {
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", roleId=" + roleId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }

@@ -25,6 +25,9 @@ public interface ApiService {
                                @Header("Content-Type") String contentType,
                                @Header("noToken") Boolean noToken);
 
-    @GET("/bake/getAndroidUser")
+    @GET("/getUser")
+    @Headers({
+            "Accept: application/json"
+    })
     Single<User> getUser();
 }

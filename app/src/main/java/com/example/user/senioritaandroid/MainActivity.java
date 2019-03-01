@@ -1,5 +1,6 @@
 package com.example.user.senioritaandroid;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
                         preferences.edit().putString("token", token.getAccessToken()).commit();
                         Log.v("SUCCESS:", token.toString());
+                        Intent getVerified = new Intent(MainActivity.this, DriverActivity.class);
+                        startActivity(getVerified);
                     }
 
                     @Override
