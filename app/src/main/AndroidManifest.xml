@@ -14,6 +14,7 @@
         <activity android:name=".CurrentRequestsActivity"></activity>
         <activity android:name=".MakeOfferActivity" />
         <activity android:name=".DriverActivity" />
+        <activity android:name=".zhandosActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
