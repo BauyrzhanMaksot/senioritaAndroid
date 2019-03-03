@@ -8,6 +8,7 @@ import com.example.user.senioritaandroid.User.User;
 import java.util.List;
 
 import io.reactivex.Single;
+import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -15,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiService {
 
@@ -35,6 +37,9 @@ public interface ApiService {
             "Accept: application/json"
     })
     Single<User> getUser();
+
+    @GET("/bake/images/{location}")
+    Single<ResponseBody> getImage(@Path("location") String location);
 
     @GET("/getRequests")
     @Headers({

@@ -29,6 +29,18 @@ public class User {
     @SerializedName("lastName")
     private String lastName;
 
+    @Expose
+    @SerializedName("enabled")
+    private Boolean enabled;
+
+    @Expose
+    @SerializedName("role")
+    private Role role;
+
+    @Expose
+    @SerializedName("userImage")
+    private UserImage userImage;
+
     public Long getId() {
         return id;
     }
@@ -77,14 +89,42 @@ public class User {
         this.lastName = lastName;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public UserImage getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(UserImage userImage) {
+        this.userImage = userImage;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                "id=" + id +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", enabled=" + enabled +
+                ", role=" + role +
+                ", userImage=" + userImage +
                 '}';
     }
 }

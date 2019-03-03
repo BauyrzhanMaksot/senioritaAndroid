@@ -10,9 +10,12 @@ public class UserImage {
     private Long id;
 
     @Expose
-    @SerializedName("id")
-    private String streetName;
+    @SerializedName("location")
+    private String location;
 
+    @Expose
+    @SerializedName("user")
+    private User user;
 
     public Long getId() {
         return id;    }
@@ -21,12 +24,28 @@ public class UserImage {
         this.id = id;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public String getLocation() {
+        return location;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "UserImage{" +
+                "id=" + id +
+                ", location='" + location + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
