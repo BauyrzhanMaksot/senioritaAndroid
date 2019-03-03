@@ -80,7 +80,7 @@ public class DriverActivity extends AppCompatActivity {
                 .client(client)
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
-        Single<User> user = apiService.getUser();
+        Single<User> user = apiService.getUser();// Comment
         user.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<User>() {
