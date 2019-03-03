@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".DriverActivity">
 
@@ -14,4 +15,18 @@
         android:textSize="30sp"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="186dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="126dp"
+        android:layout_weight="0.5"
+        android:text="Current Requests" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="Make Offer" />
 </LinearLayout>
