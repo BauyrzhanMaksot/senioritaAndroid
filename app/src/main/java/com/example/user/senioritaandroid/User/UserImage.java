@@ -1,4 +1,4 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.user.senioritaandroid.Driver.DriverActivity;
+import com.example.user.senioritaandroid.User.Token;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -23,7 +25,6 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.HttpException;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

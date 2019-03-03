@@ -1,9 +1,9 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.Driver;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Client {
+public class Driver {
 
     @Expose
     @SerializedName("id")

@@ -1,10 +1,10 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.Driver;
 
+import com.example.user.senioritaandroid.User.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
-import java.util.List;
 
 public class Offer {
     @Expose

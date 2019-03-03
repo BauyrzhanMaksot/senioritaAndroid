@@ -1,9 +1,13 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
+
+    @Expose
+    @SerializedName("id")
+    private Long id;
 
     @Expose
     @SerializedName("login")
@@ -24,6 +28,14 @@ public class User {
     @Expose
     @SerializedName("lastName")
     private String lastName;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLogin() {
         return login;

@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CurrentRequestsActivity"></activity>
-        <activity android:name=".MakeOfferActivity" />
-        <activity android:name=".DriverActivity" />
-        <activity android:name=".zhandosActivity"></activity>
+        <activity android:name=".User.ProfileActivity"></activity>
+        <activity android:name=".Client.CurrentRequestsActivity" />
+        <activity android:name=".Driver.MakeOfferActivity" />
+        <activity android:name=".Driver.DriverActivity" />
+        <activity android:name=".zhandosActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

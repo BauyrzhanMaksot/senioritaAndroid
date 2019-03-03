@@ -1,4 +1,4 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.Driver;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
+import com.example.user.senioritaandroid.ApiService;
+import com.example.user.senioritaandroid.Driver.Offer;
+import com.example.user.senioritaandroid.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

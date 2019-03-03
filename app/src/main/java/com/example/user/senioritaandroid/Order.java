@@ -1,5 +1,6 @@
 package com.example.user.senioritaandroid;
 
+import com.example.user.senioritaandroid.User.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

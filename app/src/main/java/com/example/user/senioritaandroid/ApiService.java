@@ -1,9 +1,13 @@
 package com.example.user.senioritaandroid;
 
+import com.example.user.senioritaandroid.Client.Request;
+import com.example.user.senioritaandroid.Driver.Offer;
+import com.example.user.senioritaandroid.User.Token;
+import com.example.user.senioritaandroid.User.User;
+
 import java.util.List;
 
 import io.reactivex.Single;
-import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -11,8 +15,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface ApiService {
 
@@ -42,4 +44,7 @@ public interface ApiService {
 
     @POST("/putOffer")
     Single<String> putOffer(@Body Offer offer);
+
+    @POST("/updateUser")
+    Single<String> updateUser(@Body User user);
 }
