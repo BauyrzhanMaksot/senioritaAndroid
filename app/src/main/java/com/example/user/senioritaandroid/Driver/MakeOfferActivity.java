@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.user.senioritaandroid.ApiService;
+import com.example.user.senioritaandroid.Constant;
 import com.example.user.senioritaandroid.Driver.Offer;
 import com.example.user.senioritaandroid.R;
 import com.google.gson.Gson;
@@ -70,7 +71,7 @@ public class MakeOfferActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(Constant.SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)

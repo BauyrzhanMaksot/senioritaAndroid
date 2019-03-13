@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.senioritaandroid.ApiService;
+import com.example.user.senioritaandroid.Constant;
 import com.example.user.senioritaandroid.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -43,15 +44,10 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getUser();
-        Button updateInfo = (Button) findViewById(R.id.button6);
+        Button updateInfo = (Button) findViewById(R.id.butEditProfile);
         updateInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText firstName = (EditText) findViewById(R.id.editText6);
-                EditText lastName = (EditText) findViewById(R.id.editText7);
-                EditText address =  (EditText) findViewById(R.id.editText8);
-                currentUser.setFirstName(firstName.getText().toString());
-                currentUser.setLastName(lastName.getText().toString());
                 update();
             }
         });
@@ -127,7 +123,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(Constant.SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
@@ -141,12 +137,11 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onSubscribe(Disposable d) {
                         Log.v("disposable", d.toString());
                     }
-
                     @Override
-                    public void onSuccess(ResponseBody responseBody) {
+                    public void onSuccess(ResponseBody responseBody)
+                    {
                         setImage(responseBody);
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         Log.e("error", e.toString());
@@ -156,10 +151,16 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public Boolean setImage(ResponseBody responseBody) {
-        ImageView profilePhoto = (ImageView) findViewById(R.id.imageView);
-        Bitmap bmp = BitmapFactory.decodeStream(responseBody.byteStream());
-        Bitmap resized = Bitmap.createScaledBitmap(bmp, 250, 250, true);
-        profilePhoto.setImageBitmap(resized);
+//        ImageView profilePhoto = (ImageView) findViewById(R.id.imageView);
+//        Bitmap bmp = BitmapFactory.decodeStream(responseBody.byteStream());
+//        Bitmap resized = Bitmap.createScaledBitmap(bmp, 250, 250, true);
+//        profilePhoto.setImageBitmap(resized);
+        return true;
+    }
+
+    public Boolean setFields() {
+        EditText email = (EditText) findViewById(R.id.email);
+        email.setText(currentUser.getEmail());
         return true;
     }
 
@@ -184,7 +185,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(Constant.SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
@@ -198,20 +199,14 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onSubscribe(Disposable d) {
                         Log.v("disposable", d.toString());
                     }
-
                     @Override
                     public void onSuccess(User user) {
-                        EditText firstName = (EditText) findViewById(R.id.editText6);
-                        EditText lastName = (EditText) findViewById(R.id.editText7);
-                        EditText address =  (EditText) findViewById(R.id.editText8);
-                        firstName.setText(user.getFirstName());
-                        lastName.setText(user.getLastName());
                         currentUser = user;
                         Log.v("User:", user.toString());
                         if (currentUser.getUserImage() != null)
                             getImage();
+                        setFields();
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         Log.e("error", e.toString());

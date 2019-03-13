@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         builder.interceptors().add(interceptor);
         OkHttpClient client = builder.build();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(Constant.SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
