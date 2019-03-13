@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.user.senioritaandroid.ApiService;
 import com.example.user.senioritaandroid.Client.Request;
+import com.example.user.senioritaandroid.Constant;
 import com.example.user.senioritaandroid.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,7 +56,7 @@ public class CurrentRequestsActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(Constant.SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)

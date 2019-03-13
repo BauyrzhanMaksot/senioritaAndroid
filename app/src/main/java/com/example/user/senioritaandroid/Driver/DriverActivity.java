@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.user.senioritaandroid.ApiService;
 import com.example.user.senioritaandroid.Client.CurrentRequestsActivity;
+import com.example.user.senioritaandroid.Constant;
 import com.example.user.senioritaandroid.R;
 import com.example.user.senioritaandroid.User.ProfileActivity;
 import com.example.user.senioritaandroid.User.User;
@@ -88,7 +89,7 @@ public class DriverActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(Constant.SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
