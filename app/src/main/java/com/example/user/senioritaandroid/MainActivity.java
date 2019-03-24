@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
                         preferences.edit().putString("token", token.getAccessToken()).commit();
                         Log.v("SUCCESS:", token.toString());
-                        Intent getVerified = new Intent(MainActivity.this, DriverActivity.class);
+                        Intent getVerified = new Intent(MainActivity.this, ZhandosActivity.class);
                         startActivity(getVerified);
                     }
 

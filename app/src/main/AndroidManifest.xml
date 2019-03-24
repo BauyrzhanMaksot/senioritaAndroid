@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".User.ProfileActivity"></activity>
+        <activity android:name=".ZhandosActivity"></activity>
+        <activity android:name=".User.ProfileActivity" />
         <activity android:name=".Client.CurrentRequestsActivity" />
         <activity android:name=".Driver.MakeOfferActivity" />
         <activity android:name=".Driver.DriverActivity" />
