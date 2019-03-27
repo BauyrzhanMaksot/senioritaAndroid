@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if (e instanceof SocketTimeoutException) {
                             Log.e("ERROR", "SocketTimeout");
                         } else if (e instanceof IOException) {
-                            Log.e("ERROR", "IOE");
+                            Log.e("ERROR", "IOE " +   e);
                         } else {
                             Log.e("ERROR", "UNK");
                         }

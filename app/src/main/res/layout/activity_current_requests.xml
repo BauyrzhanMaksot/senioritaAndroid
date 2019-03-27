@@ -50,16 +50,16 @@ android:background="@drawable/gradientbackground">
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="12dp"
-            android:background="@drawable/buttonstyleithgradient"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
 
             <LinearLayout
+                android:background="@drawable/gradientbackground"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_margin="12dp">
+                >
 
                 <ImageView
                     android:layout_width="100dp"
@@ -142,6 +142,7 @@ android:background="@drawable/gradientbackground">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/gradientbackground"
                 android:layout_margin="12dp">
 
                 <ImageView

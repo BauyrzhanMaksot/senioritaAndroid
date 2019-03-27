@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/gradientbackground"
-    tools:context=".MainActivity">
+    tools:context=".Register">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,23 +57,47 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#f9d7db" />
-        <Button
-            android:id="@+id/button"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log in"
-            android:textColor="#f16f7d"
-            android:textAllCaps="false"
-            android:background="@drawable/buttonstyleithgradient"
-            android:padding="16dp"
-            android:clickable="true"
-            style="@style/Base.TextAppearance.AppCompat.Body1"
-            android:layout_marginTop="24dp"/>
+            android:inputType="textPassword"
+            android:id="@+id/editText3"
+            android:ems="10"
+            android:drawablePadding="12dp"
+            android:padding="8dp"
+            android:hint="Confirm Password"
+            android:textColorHint="#fff"
+            android:maxLines="1"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="4dp"
+            android:drawableLeft="@drawable/ic_forum_black_24dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f9d7db" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/editText4"
+            android:ems="10"
+            android:drawablePadding="12dp"
+            android:padding="8dp"
+            android:hint="Role"
+            android:textColorHint="#fff"
+            android:maxLines="1"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="4dp"
+            android:drawableLeft="@drawable/ic_group_add_black_24dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f9d7db" />
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="Submit"
             android:textColor="#fff"
             android:textAllCaps="false"
             android:background="@drawable/registerbutton"

@@ -11,16 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ZhandosActivity"></activity>
+        <activity android:name=".Register"></activity>
+        <activity android:name=".Client.MyOffersActivity" />
+        <activity android:name=".Client.AcceptedRequestsActivity" />
+        <activity android:name=".Client.HistoryActivity" />
+        <activity android:name=".ZhandosActivity" />
         <activity android:name=".User.ProfileActivity" />
         <activity android:name=".Client.CurrentRequestsActivity" />
         <activity android:name=".Driver.MakeOfferActivity" />
         <activity android:name=".Driver.DriverActivity" />
-        <activity android:name=".zhandosActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
