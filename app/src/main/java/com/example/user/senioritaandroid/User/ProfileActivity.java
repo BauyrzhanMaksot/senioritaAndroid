@@ -38,7 +38,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ProfileActivity extends AppCompatActivity {
 
     private User currentUser;
-
+    private EditText userName;
+    private EditText email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity {
                 update();
             }
         });
+        userName = (EditText) findViewById(R.id.userName);
+        email = (EditText) findViewById(R.id.email);
     }
 
     public Boolean update() {
@@ -74,12 +77,14 @@ public class ProfileActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(Constant.SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
+        currentUser.setLogin(userName.getText().toString());
+        currentUser.setEmail(email.getText().toString());
         Single<String> result = apiService.updateUser(currentUser);// Comment
         result.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -159,8 +164,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public Boolean setFields() {
-        EditText email = (EditText) findViewById(R.id.email);
         email.setText(currentUser.getEmail());
+        userName.setText(currentUser.getLogin());
         return true;
     }
 

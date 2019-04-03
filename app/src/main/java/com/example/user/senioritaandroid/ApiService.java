@@ -5,6 +5,7 @@ import com.example.user.senioritaandroid.Driver.Offer;
 import com.example.user.senioritaandroid.User.Token;
 import com.example.user.senioritaandroid.User.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
@@ -45,11 +46,47 @@ public interface ApiService {
     @Headers({
             "Accept: application/json"
     })
-    Single<List<Request>> getRequests();
+    Single<ArrayList<Request>> getRequests();
+
+    @GET("/getOffers")
+    @Headers({
+            "Accept: application/json"
+    })
+    Single<ArrayList<Offer>> getOffers();
+
+    @GET("/getAcceptedHistoryDriver")
+    @Headers({
+            "Accept: application/json"
+    })
+    Single<List<Order>> getAcceptedRequests();
+
+    @GET("/getAcceptedHistoryClient")
+    @Headers({
+            "Accept: application/json"
+    })
+    Single<List<Order>> getAcceptedOffers();
+
+    @GET("/getHistoryDriver")
+    @Headers({
+            "Accept: application/json"
+    })
+    Single<List<Order>> getHistory();
 
     @POST("/putOffer")
     Single<String> putOffer(@Body Offer offer);
 
+    @GET("/acceptRequest/{requestId}")
+    Single<String> acceptRequest(@Path("requestId") Long requestId);
+
+    @GET("finishRequest/{requestId}")
+    Single<String> finishRequest(@Path("requestId") Long requestId);
+
     @POST("/updateUser")
     Single<String> updateUser(@Body User user);
+
+    @GET("/getOffer")
+    Single<List<Offer>> getMyOffers();
+
+    @GET("/getRequests")
+    Single<List<Request>> getMyRequests();
 }

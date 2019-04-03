@@ -1,13 +1,16 @@
-package com.example.user.senioritaandroid.Client;
+package com.example.user.senioritaandroid.Driver.Activity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.example.user.senioritaandroid.ApiService;
-import com.example.user.senioritaandroid.Client.Request;
 import com.example.user.senioritaandroid.Constant;
+import com.example.user.senioritaandroid.Driver.Adapter.OfferListAdapter;
+import com.example.user.senioritaandroid.Driver.Offer;
 import com.example.user.senioritaandroid.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,16 +29,20 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CurrentRequestsActivity extends AppCompatActivity {
+public class MyOffersActivity extends AppCompatActivity {
 
+    ListView listView;
+    Context thisContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_requests);
-        getRequests();
+        setContentView(R.layout.activity_myoffers);
+        listView = findViewById(R.id.driver_my_offers_list_view);
+        thisContext = this;
+        getOffers(thisContext);
     }
 
-    public boolean getRequests() {
+    public void getOffers(final Context context) {
         Interceptor interceptor = new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -62,24 +69,24 @@ public class CurrentRequestsActivity extends AppCompatActivity {
                 .client(client)
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
-        Single<List<Request>> requests = apiService.getRequests();
-        requests.subscribeOn(Schedulers.io())
+        Single<List<Offer>> offers = apiService.getMyOffers();
+        offers.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<List<Request>>() {
+                .subscribe(new SingleObserver<List<Offer>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         Log.v("disposable", d.toString());
                     }
                     @Override
-                    public void onSuccess(List<Request> requests) {
-                        Log.v("Request:", requests.toString());
+                    public void onSuccess(List<Offer> offers) {
+                        Log.v("Offers:", offers.toString());
+                        OfferListAdapter adapter = new OfferListAdapter(context, R.layout.adapter_view_my_offers_driver, offers);
+                        listView.setAdapter(adapter);
                     }
                     @Override
                     public void onError(Throwable e) {
                         Log.e("error", e.toString());
                     }
                 });
-        return true;
     }
-
 }

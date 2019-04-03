@@ -108,7 +108,7 @@
         <Button
             android:id="@+id/butEditProfile"
             android:textColor="#fff"
-            android:background="@drawable/buttonstyleithgradient"
+            android:background="@drawable/registerbutton"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"

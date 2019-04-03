@@ -102,6 +102,14 @@ public class Offer {
         this.price = price;
     }
 
+    public Offer(Long id, String pointA, String pointB, String price, User driver) {
+        this.id = id;
+        this.pointA = pointA;
+        this.pointB = pointB;
+        this.price = price;
+        this.driver = driver;
+    }
+
     @Override
     public String toString() {
         return "Offer{" +

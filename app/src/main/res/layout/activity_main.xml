@@ -70,7 +70,7 @@
             style="@style/Base.TextAppearance.AppCompat.Body1"
             android:layout_marginTop="24dp"/>
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register"

@@ -11,19 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register"></activity>
-        <activity android:name=".Client.MyOffersActivity" />
-        <activity android:name=".Client.AcceptedRequestsActivity" />
-        <activity android:name=".Client.HistoryActivity" />
-        <activity android:name=".ZhandosActivity" />
+        <activity android:name=".Client.Activity.MyRequestsActivity"></activity>
+        <activity android:name=".Client.Activity.HistoryClientActivity" />
+        <activity android:name=".Client.Activity.AcceptedOffersActivity" />
+        <activity android:name=".Client.Activity.CurrentOffersActivity" />
+        <activity android:name=".HomeClientActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Driver.Activity.MyOffersActivity" />
+        <activity android:name=".Driver.Activity.AcceptedRequestsActivity" />
+        <activity android:name=".Driver.Activity.HistoryActivity" />
+        <activity android:name=".HomeDriverActivity" />
         <activity android:name=".User.ProfileActivity" />
-        <activity android:name=".Client.CurrentRequestsActivity" />
-        <activity android:name=".Driver.MakeOfferActivity" />
-        <activity android:name=".Driver.DriverActivity" />
+        <activity android:name=".Driver.Activity.CurrentRequestsActivity" />
+        <activity android:name=".Driver.Activity.MakeOfferActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

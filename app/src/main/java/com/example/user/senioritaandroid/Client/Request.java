@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Request {
+
     @Expose
     @SerializedName("id")
     private Long id;
@@ -20,6 +21,14 @@ public class Request {
     @Expose
     @SerializedName("client")
     private User client;
+
+    public Request(Long id, String pointA, String pointB, String price, User client) {
+        this.id = id;
+        this.pointA = pointA;
+        this.pointB = pointB;
+        this.price = price;
+        this.client = client;
+    }
 
     public Long getId() {
         return id;
