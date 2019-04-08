@@ -10,7 +10,7 @@ public class Street {
     private Long id;
 
     @Expose
-    @SerializedName("street_name")
+    @SerializedName("streetName")
     private String streetName;
 
     public Long getId() {
@@ -26,5 +26,13 @@ public class Street {
 
     public void setStreetName(String streetName) {
         this.streetName = streetName;
+    }
+
+    @Override
+    public String toString() {
+        return "Street{" +
+                "id=" + id +
+                ", streetName='" + streetName + '\'' +
+                '}';
     }
 }

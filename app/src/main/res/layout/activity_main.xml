@@ -81,6 +81,5 @@
             android:clickable="true"
             style="@style/Base.TextAppearance.AppCompat.Body1"
             android:layout_marginTop="24dp"/>
-
     </LinearLayout>
 </ScrollView>

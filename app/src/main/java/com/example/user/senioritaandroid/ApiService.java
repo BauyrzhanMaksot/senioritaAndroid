@@ -2,6 +2,7 @@ package com.example.user.senioritaandroid;
 
 import com.example.user.senioritaandroid.Client.Request;
 import com.example.user.senioritaandroid.Driver.Offer;
+import com.example.user.senioritaandroid.User.Street;
 import com.example.user.senioritaandroid.User.Token;
 import com.example.user.senioritaandroid.User.User;
 
@@ -78,14 +79,26 @@ public interface ApiService {
     @GET("/acceptRequest/{requestId}")
     Single<String> acceptRequest(@Path("requestId") Long requestId);
 
+    @GET("/acceptOffer/{offerId}")
+    Single<String> acceptOffer(@Path("offerId") Long offerdId);
+
     @GET("finishRequest/{requestId}")
     Single<String> finishRequest(@Path("requestId") Long requestId);
 
     @POST("/updateUser")
     Single<String> updateUser(@Body User user);
 
+    @POST("/putRequest")
+    Single<String> putRequest(@Body Request request);
+
+    @GET("/getStreets")
+    Single<List<Street>> getStreets();
+
     @GET("/getOffer")
     Single<List<Offer>> getMyOffers();
+
+    @GET("getDriver/{id}")
+    Single<User> getDriver(@Path("id") Long id);
 
     @GET("/getRequests")
     Single<List<Request>> getMyRequests();

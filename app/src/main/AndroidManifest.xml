@@ -3,6 +3,7 @@
     package="com.example.user.senioritaandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Client.Activity.MyRequestsActivity"></activity>
+        <activity android:name=".Client.Activity.MakeRequestActivity"></activity>
+        <activity android:name=".Client.Activity.DriverInfoActivity" />
+        <activity android:name=".Client.Activity.MyRequestsActivity" />
         <activity android:name=".Client.Activity.HistoryClientActivity" />
         <activity android:name=".Client.Activity.AcceptedOffersActivity" />
         <activity android:name=".Client.Activity.CurrentOffersActivity" />
@@ -23,7 +26,6 @@
         <activity android:name=".HomeDriverActivity" />
         <activity android:name=".User.ProfileActivity" />
         <activity android:name=".Driver.Activity.CurrentRequestsActivity" />
-        <activity android:name=".Driver.Activity.MakeOfferActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

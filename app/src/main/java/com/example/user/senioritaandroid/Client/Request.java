@@ -30,6 +30,12 @@ public class Request {
         this.client = client;
     }
 
+    public Request(String pointA, String pointB, String price) {
+        this.pointA = pointA;
+        this.pointB = pointB;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }
