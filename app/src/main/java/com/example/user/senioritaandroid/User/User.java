@@ -113,6 +113,12 @@ public class User {
         this.userImage = userImage;
     }
 
+    public User(String password, String email, Role role) {
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +

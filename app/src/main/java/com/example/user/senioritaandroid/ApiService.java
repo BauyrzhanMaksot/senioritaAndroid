@@ -40,6 +40,9 @@ public interface ApiService {
     })
     Single<User> getUser();
 
+    @POST("/bake/register")
+    Single<String> register(@Body User user);
+
     @GET("/bake/images/{location}")
     Single<ResponseBody> getImage(@Path("location") String location);
 

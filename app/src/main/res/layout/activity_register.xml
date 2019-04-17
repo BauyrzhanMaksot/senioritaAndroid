@@ -22,7 +22,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height = "wrap_content"
-            android:id = "@+id/editText"
+            android:id = "@+id/emailRegister"
             android:inputType="textEmailAddress"
             android:focusable = "true"
             android:ems="10"
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:id="@+id/editText2"
+            android:id="@+id/passwordRegister"
             android:ems="10"
             android:drawablePadding="12dp"
             android:padding="8dp"
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:id="@+id/editText3"
+            android:id="@+id/confirmPasswordRegister"
             android:ems="10"
             android:drawablePadding="12dp"
             android:padding="8dp"
@@ -75,26 +75,25 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#f9d7db" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:id="@+id/editText4"
-            android:ems="10"
-            android:drawablePadding="12dp"
-            android:padding="8dp"
-            android:hint="Role"
-            android:textColorHint="#fff"
-            android:maxLines="1"
-            android:background="@android:color/transparent"
-            android:layout_marginTop="4dp"
-            android:drawableLeft="@drawable/ic_group_add_black_24dp"/>
+            <Spinner
+                android:id="@+id/roleSpinnerRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Role"
+                android:ems="10"
+                android:drawablePadding="12dp"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:color="#fff"
+                android:layout_marginTop="4dp"
+                android:textColorHint="#fff"
+                />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#f9d7db" />
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"

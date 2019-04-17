@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Client.Activity.MakeRequestActivity"></activity>
+        <activity android:name=".Driver.Activity.MakeOfferActivity"></activity>
+        <activity android:name=".Driver.Activity.ClientInfoActivity" />
+        <activity android:name=".Client.Activity.MakeRequestActivity" />
         <activity android:name=".Client.Activity.DriverInfoActivity" />
         <activity android:name=".Client.Activity.MyRequestsActivity" />
         <activity android:name=".Client.Activity.HistoryClientActivity" />
