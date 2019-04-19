@@ -1,5 +1,6 @@
 package com.example.user.senioritaandroid;
 
+import com.example.user.senioritaandroid.User.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,12 +14,12 @@ public class Order {
 
 
     @Expose
-    @SerializedName("point_a")
+    @SerializedName("pointA")
     private String pointA;
 
 
     @Expose
-    @SerializedName("point_b")
+    @SerializedName("pointB")
     private String pointB;
 
 
@@ -28,27 +29,27 @@ public class Order {
 
 
     @Expose
-    @SerializedName("client_rating")
+    @SerializedName("clientRating")
     private String clientRating;
 
     @Expose
-    @SerializedName("client_comment")
+    @SerializedName("clientComment")
     private String clientComment;
 
     @Expose
-    @SerializedName("driver_rating")
+    @SerializedName("driverRating")
     private String driverRating;
 
     @Expose
-    @SerializedName("driver_comment")
+    @SerializedName("driverComment")
     private String driverComment;
 
     @Expose
-    @SerializedName("driver_id")
+    @SerializedName("driver")
     private User driver;
 
     @Expose
-    @SerializedName("client_id")
+    @SerializedName("client")
     private User client;
 
     @Expose
@@ -152,5 +153,23 @@ public class Order {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", pointA='" + pointA + '\'' +
+                ", pointB='" + pointB + '\'' +
+                ", date=" + date +
+                ", clientRating='" + clientRating + '\'' +
+                ", clientComment='" + clientComment + '\'' +
+                ", driverRating='" + driverRating + '\'' +
+                ", driverComment='" + driverComment + '\'' +
+                ", driver=" + driver +
+                ", client=" + client +
+                ", price='" + price + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

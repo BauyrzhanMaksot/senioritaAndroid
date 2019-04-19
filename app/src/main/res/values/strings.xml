@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">senioritaAndroid</string>
+    <string-array name="planets_array">
+        <item>Driver</item>
+        <item>Client</item>
+    </string-array>
 </resources>

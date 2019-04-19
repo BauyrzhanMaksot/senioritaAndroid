@@ -3,6 +3,7 @@
     package="com.example.user.senioritaandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".history"></activity>
-        <activity android:name=".zhandosActivity" />
-        <activity android:name=".DriverActivity" />
+        <activity android:name=".Driver.Activity.MakeOfferActivity"></activity>
+        <activity android:name=".Driver.Activity.ClientInfoActivity" />
+        <activity android:name=".Client.Activity.MakeRequestActivity" />
+        <activity android:name=".Client.Activity.DriverInfoActivity" />
+        <activity android:name=".Client.Activity.MyRequestsActivity" />
+        <activity android:name=".Client.Activity.HistoryClientActivity" />
+        <activity android:name=".Client.Activity.AcceptedOffersActivity" />
+        <activity android:name=".Client.Activity.CurrentOffersActivity" />
+        <activity android:name=".HomeClientActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Driver.Activity.MyOffersActivity" />
+        <activity android:name=".Driver.Activity.AcceptedRequestsActivity" />
+        <activity android:name=".Driver.Activity.HistoryActivity" />
+        <activity android:name=".HomeDriverActivity" />
+        <activity android:name=".User.ProfileActivity" />
+        <activity android:name=".Driver.Activity.CurrentRequestsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
