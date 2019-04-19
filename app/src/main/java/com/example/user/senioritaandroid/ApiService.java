@@ -5,7 +5,6 @@ import com.example.user.senioritaandroid.Driver.Offer;
 import com.example.user.senioritaandroid.User.Street;
 import com.example.user.senioritaandroid.User.Token;
 import com.example.user.senioritaandroid.User.User;
-import com.example.user.senioritaandroid.User.UserDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +41,7 @@ public interface ApiService {
     Single<User> getUser();
 
     @POST("/bake/register")
-    Single<String> register(@Body UserDto user);
+    Single<String> register(@Body User user);
 
     @GET("/bake/images/{location}")
     Single<ResponseBody> getImage(@Path("location") String location);

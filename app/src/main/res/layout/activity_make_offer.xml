@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Driver.Activity.MakeOfferActivity"
+    android:background="@drawable/gradientbackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+<LinearLayout
+    android:background="@drawable/shape"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="14dp"
+    android:orientation="vertical"
+    >
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewDriver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:hint="Choose Point A">
+        <requestFocus />
+    </AutoCompleteTextView>
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewDriver2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:hint="Choose Point B">
+    </AutoCompleteTextView>
+
+    <EditText
+        android:id="@+id/priceMakeOffer"
+        android:layout_marginBottom="30dp"
+        android:hint="Price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonMakeOffer"
+        android:background="@drawable/registerbutton"
+        android:text="Make an Offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+        <LinearLayout
+            android:background="@drawable/shape"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="14dp"
+            android:orientation="vertical"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewDriver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="Choose Point A">
+                <requestFocus />
+            </AutoCompleteTextView>
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewDriver2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="Choose Point B">
+            </AutoCompleteTextView>
+
+            <EditText
+                android:id="@+id/priceMakeOffer"
+                android:layout_marginBottom="30dp"
+                android:hint="Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/priceMakeOffer"
+                android:layout_marginBottom="30dp"
+                android:hint="Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/buttonMakeOffer"
+                android:background="@drawable/registerbutton"
+                android:text="Long Term"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
