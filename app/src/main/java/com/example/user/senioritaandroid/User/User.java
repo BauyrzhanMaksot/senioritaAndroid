@@ -113,7 +113,8 @@ public class User {
         this.userImage = userImage;
     }
 
-    public User(String password, String email, Role role) {
+    public User(String login, String password, String email, Role role) {
+        this.login = login;
         this.password = password;
         this.email = email;
         this.role = role;

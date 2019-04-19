@@ -40,6 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
     private User currentUser;
     private EditText userName;
     private EditText email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,10 +157,10 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public Boolean setImage(ResponseBody responseBody) {
-//        ImageView profilePhoto = (ImageView) findViewById(R.id.imageView);
-//        Bitmap bmp = BitmapFactory.decodeStream(responseBody.byteStream());
-//        Bitmap resized = Bitmap.createScaledBitmap(bmp, 250, 250, true);
-//        profilePhoto.setImageBitmap(resized);
+        ImageView profilePhoto = (ImageView) findViewById(R.id.imageView);
+        Bitmap bmp = BitmapFactory.decodeStream(responseBody.byteStream());
+        Bitmap resized = Bitmap.createScaledBitmap(bmp, 250, 250, true);
+        profilePhoto.setImageBitmap(resized);
         return true;
     }
 

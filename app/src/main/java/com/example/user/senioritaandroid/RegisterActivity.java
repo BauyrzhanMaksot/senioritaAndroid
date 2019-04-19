@@ -1,5 +1,6 @@
 package com.example.user.senioritaandroid;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.example.user.senioritaandroid.Client.Adapter.OfferClientListAdapter;
 import com.example.user.senioritaandroid.Driver.Offer;
 import com.example.user.senioritaandroid.User.Role;
 import com.example.user.senioritaandroid.User.User;
+import com.example.user.senioritaandroid.User.UserDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -34,7 +36,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterActivity extends AppCompatActivity {
 
     Button register;
-    EditText emailView, passwordView, confirmPasswordView;
+    EditText loginView, emailView, passwordView, confirmPasswordView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_register);
@@ -58,28 +61,29 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void prepareData(String role) {
+        loginView = findViewById(R.id.loginRegister);
         emailView = findViewById(R.id.emailRegister);
         passwordView = findViewById(R.id.passwordRegister);
         confirmPasswordView = findViewById(R.id.confirmPasswordRegister);
+        String login = loginView.getText().toString();
         String email = emailView.getText().toString();
         String password = passwordView.getText().toString();
         String confirmPassword = confirmPasswordView.getText().toString();
         Log.v("Register",email+" "+password+" "+confirmPassword);
         if (password.equals(confirmPassword)) {
-            Role roleObj = new Role();
+            UserDto userDto;
+            Long roleId;
             if (role=="client") {
-                roleObj.setId((long)2);
-                roleObj.setName(role);
+                roleId = (long)2;
             } else {
-                roleObj.setId((long)3);
-                roleObj.setName(role);
+                roleId = (long)3;
             }
-            User user = new User(password, email, roleObj);
-            register(user);
+            userDto = new UserDto(login, password, email, roleId);
+            register(userDto);
         }
     }
 
-    public void register(User user) {
+    public void register(UserDto user) {
         Interceptor interceptor = new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -117,6 +121,8 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(String request) {
                         Log.v("Register:", request.toString());
+                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
                     @Override
                     public void onError(Throwable e) {

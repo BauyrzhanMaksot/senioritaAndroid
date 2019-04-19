@@ -22,7 +22,7 @@
             android:layout_margin="25dp">
 
             <TextView
-                android:text="Welcome, Bauyrzhan"
+                android:text="Welcome, Driver"
                 android:textSize="22sp"
                 android:textColor="#FFFFFF"
                 android:layout_width="0dp"
