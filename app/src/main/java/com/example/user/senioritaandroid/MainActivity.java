@@ -2,6 +2,7 @@ package com.example.user.senioritaandroid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -31,7 +32,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static int SPLASH_TIME_OUT = 4000;
     Button loginB, registerB;
     EditText userNameE, passwordE;
 
@@ -55,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
                     register();
             }
         });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                    Intent splashIntent = new Intent(MainActivity.this, SplashActivity.class);
+                    startActivity(splashIntent);
+                    finish();
+            }
+        }, SPLASH_TIME_OUT);
+
     }
 
     public boolean register() {
