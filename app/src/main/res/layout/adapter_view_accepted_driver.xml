@@ -1,95 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    android:layout_width="wrap_content"
-    android:layout_height="150dp"
-    android:layout_margin="12dp"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="6dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/graylight"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:background="@drawable/gradientbackground"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left"
-            android:src="@drawable/images" />
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+        <GridLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:maxLines="1"
-                android:paddingLeft="12dp"
-                android:text="Point A"
-                android:id="@+id/pointAAccepted"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                android:drawableLeft="@drawable/ic_location_on_red_24dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:paddingLeft="12dp"
-                android:text="Point B"
-                android:id="@+id/pointBAccepted"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                android:drawableLeft="@drawable/ic_location_on_blue_24dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:paddingLeft="12dp"
-                android:id="@+id/priceAccepted"
-                android:text="Price"
-                android:textColor="#fff"
-                android:textSize="24sp"
-                android:layout_marginTop="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:paddingLeft="12dp"
-                android:text="Date"
-                android:id="@+id/dateAccepted"
-                android:textColor="#fff"
-                android:textSize="24sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="120dp"
-            android:layout_height="150dp"
-            android:paddingTop="90dp"
-            android:paddingLeft="10dp"
-            android:layout_gravity="left">
-
-            <Button
+            android:alignmentMode="alignMargins"
+            android:background="@drawable/shape"
+            android:columnCount="1"
+            android:columnOrderPreserved="true"
+            android:rowCount="8">
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/registerbutton"
-                android:maxLines="1"
-                android:text="Finish"
-                android:id="@+id/finishAccepted"
-                android:textColor="#fff"
-                android:textSize="24sp" />
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="14dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
 
-</android.support.v7.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradientbackground"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:src="@drawable/images" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="12dp"
+                            android:text="Name"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:maxLines="1"
+                            android:paddingLeft="12dp"
+                            android:text="Lastname"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            />
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="12dp"
+                            android:text="Point A"
+                            android:id="@+id/pointAAccepted"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:drawableLeft="@drawable/ic_location_on_red_24dp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/pointBAccepted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_location_on_blue_24dp"
+                            android:paddingLeft="12dp"
+                            android:text="Point B"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/priceAccepted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="12dp"
+                            android:text="Price"
+                            android:textColor="#000000"
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/finishAccepted"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/registerbutton"
+                            android:text="Finish"
+                            android:textColor="#000000"
+                            android:textSize="24sp"
+                            android:layout_gravity="end"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>

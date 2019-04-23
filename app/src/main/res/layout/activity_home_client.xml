@@ -24,7 +24,8 @@
             <TextView
                 android:text="Welcome, Client"
                 android:textSize="22sp"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
@@ -38,219 +39,239 @@
 
 
         <GridLayout
-            android:background="@drawable/shape"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:background="@drawable/shape"
+            android:columnCount="1"
+            android:columnOrderPreserved="true"
+            android:rowCount="3">
 
-
-            <android.support.v7.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                android:onClick="onCurrentOffers"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 >
 
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="12dp"
+                    android:onClick="onCurrentOffers"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
-                <LinearLayout
-                    android:background="@drawable/gradientbackground"
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/current"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:text="Current Offers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                android:onClick="onMyProfile"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:background="@drawable/gradientbackground">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/current" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Current"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="12dp"
+                    android:onClick="onMyProfile"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
+
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:background="@drawable/gradientbackground"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@drawable/myprofile"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp" />
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:text="My Profile"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 >
 
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="12dp"
+                    android:onClick="onAcceptedOffers"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    android:gravity="center"
-                    android:background="@drawable/gradientbackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/myprofile"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:text="My Profile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                android:onClick="onAcceptedOffers"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/gradientbackground"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@drawable/accepted"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp" />
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Accepted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="12dp"
+                    android:onClick="onHistory"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
+
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/gradientbackground"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@drawable/history"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp" />
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:text="History"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 >
 
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/gradientbackground"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/accepted"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:text="Accepted Requests"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                app:cardPreventCornerOverlap="true"
-                android:onClick="onHistory"
-                >
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="12dp"
+                    android:onClick="onMakeRequest"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/gradientbackground"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/history"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:text="History"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/gradientbackground"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@drawable/longterm"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp" />
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Make an Offer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                android:onClick="onMakeRequest"
-                >
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="12dp"
+                    android:onClick="onMyRequests"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp">
 
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/gradientbackground"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/longterm"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:text="Long Term Offer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:background="@drawable/gradientbackground"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@drawable/myoffers"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp" />
 
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                android:onClick="onMyRequests"
-                >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="My Requests"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    android:background="@drawable/gradientbackground"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/myoffers"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:text="My Offers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
 
         </GridLayout>
 

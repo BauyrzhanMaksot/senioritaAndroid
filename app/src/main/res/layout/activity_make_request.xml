@@ -1,40 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientbackground"
     android:orientation="vertical"
-    tools:context=".Client.Activity.MakeRequestActivity">
+    tools:context=".Client.Activity.MakeRequestActivity"
+    android:background="@drawable/gradientbackground">
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:hint="Choose Point A">
-        <requestFocus />
-    </AutoCompleteTextView>
+        android:layout_height="200dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:background="@drawable/shape"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="14dp"
+            android:orientation="vertical">
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:hint="Choose Point B">
-    </AutoCompleteTextView>
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="Choose Point A">
+                <requestFocus />
+            </AutoCompleteTextView>
 
-    <EditText
-        android:id="@+id/priceMakeRequestClient"
-        android:layout_marginBottom="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="Choose Point B">
+            </AutoCompleteTextView>
 
-    <Button
-        android:id="@+id/buttonMakeRequestClient"
-        android:background="@drawable/registerbutton"
-        android:text="Make an Request"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+            <EditText
+                android:id="@+id/priceMakeRequestClient"
+                android:layout_marginBottom="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Price"/>
+
+            <Button
+                android:id="@+id/buttonMakeRequestClient"
+                android:background="@drawable/registerbutton"
+                android:text="Make an Request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        </LinearLayout></ScrollView>
