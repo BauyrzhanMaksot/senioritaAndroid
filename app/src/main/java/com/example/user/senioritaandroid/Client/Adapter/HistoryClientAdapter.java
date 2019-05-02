@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.user.senioritaandroid.Client.Request;
-import com.example.user.senioritaandroid.Order;
+import com.example.user.senioritaandroid.Extra.Order;
 import com.example.user.senioritaandroid.R;
 import com.example.user.senioritaandroid.User.User;
 

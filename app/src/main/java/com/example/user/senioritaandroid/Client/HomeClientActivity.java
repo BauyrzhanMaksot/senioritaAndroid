@@ -1,4 +1,4 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.Client;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,36 +13,40 @@ import android.view.View;
 
 import com.example.user.senioritaandroid.Client.Activity.AcceptedOffersActivity;
 import com.example.user.senioritaandroid.Client.Activity.CurrentOffersActivity;
-import com.example.user.senioritaandroid.Driver.Activity.AcceptedRequestsActivity;
-import com.example.user.senioritaandroid.Driver.Activity.CurrentRequestsActivity;
-import com.example.user.senioritaandroid.Driver.Activity.HistoryActivity;
-import com.example.user.senioritaandroid.Driver.Activity.MakeOfferActivity;
-import com.example.user.senioritaandroid.Driver.Activity.MyOffersActivity;
+import com.example.user.senioritaandroid.Client.Activity.HistoryClientActivity;
+import com.example.user.senioritaandroid.Client.Activity.MakeRequestActivity;
+import com.example.user.senioritaandroid.Client.Activity.MyRequestsActivity;
+import com.example.user.senioritaandroid.Extra.Constant;
+import com.example.user.senioritaandroid.R;
 import com.example.user.senioritaandroid.User.ProfileActivity;
+import com.example.user.senioritaandroid.WebSocket.SpringBootWebSocketClient;
+import com.example.user.senioritaandroid.WebSocket.StompMessage;
+import com.example.user.senioritaandroid.WebSocket.StompMessageListener;
+import com.example.user.senioritaandroid.WebSocket.TopicHandler;
 
-public class HomeDriverActivity extends AppCompatActivity {
+public class HomeClientActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_driver);
+        setContentView(R.layout.activity_home_client);
         SpringBootWebSocketClient client = new SpringBootWebSocketClient();
-        TopicHandler handler = client.subscribe("/bake/driver");
+        TopicHandler handler = client.subscribe("/bake/client");
         handler.addListener(new StompMessageListener() {
             @Override
             public void onMessage(StompMessage message) {
                 System.out.println(message.getHeader("destination") + ": " + message.getContent());
                 Intent intent;
                 if (message.getContent().contains("id=")) {
-                    intent = new Intent(HomeDriverActivity.this, AcceptedOffersActivity.class);
+                    intent = new Intent(HomeClientActivity.this, AcceptedOffersActivity.class);
                 } else {
-                    intent = new Intent(HomeDriverActivity.this, CurrentOffersActivity.class);
+                    intent = new Intent(HomeClientActivity.this, CurrentOffersActivity.class);
                 }
-                TaskStackBuilder t = TaskStackBuilder.create(HomeDriverActivity.this);
+                TaskStackBuilder t = TaskStackBuilder.create(HomeClientActivity.this);
                 t.addParentStack(HomeClientActivity.class);
                 t.addNextIntent(intent);
                 PendingIntent p = t.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-                Notification n = new Notification.Builder(HomeDriverActivity.this)
+                Notification n = new Notification.Builder(HomeClientActivity.this)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("Ticocar")
                         .setContentText(message.getContent())
@@ -58,33 +62,33 @@ public class HomeDriverActivity extends AppCompatActivity {
         client.connect(Constant.ws + "bake/ws/websocket");
     }
 
-    public void onCurrentRequest(View view) {
-        Intent currentRequest = new Intent(HomeDriverActivity.this, CurrentRequestsActivity.class);
+    public void onCurrentOffers(View view) {
+        Intent currentRequest = new Intent(HomeClientActivity.this, CurrentOffersActivity.class);
         startActivity(currentRequest);
     }
 
-    public void onAcceptedRequest(View view) {
-        Intent acceptedRequest = new Intent(HomeDriverActivity.this, AcceptedRequestsActivity.class);
-        startActivity(acceptedRequest);
+    public void onAcceptedOffers(View view) {
+        Intent acceptedOffers = new Intent(HomeClientActivity.this, AcceptedOffersActivity.class);
+        startActivity(acceptedOffers);
     }
 
     public void onHistory(View view) {
-        Intent history = new Intent(HomeDriverActivity.this, HistoryActivity.class);
+        Intent history = new Intent(HomeClientActivity.this, HistoryClientActivity.class);
         startActivity(history);
     }
 
     public void onMyProfile(View view) {
-        Intent myProfile = new Intent(HomeDriverActivity.this, ProfileActivity.class);
+        Intent myProfile = new Intent(HomeClientActivity.this, ProfileActivity.class);
         startActivity(myProfile);
     }
 
-    public void onMyOffers(View view) {
-        Intent myOffers = new Intent(HomeDriverActivity.this, MyOffersActivity.class);
-        startActivity(myOffers);
+    public void onMyRequests(View view) {
+        Intent myRequests = new Intent(HomeClientActivity.this, MyRequestsActivity.class);
+        startActivity(myRequests);
     }
 
-    public void onMakeOffer(View view) {
-        Intent makeOffer = new Intent(HomeDriverActivity.this, MakeOfferActivity.class);
-        startActivity(makeOffer);
+    public void onMakeRequest(View view) {
+        Intent makeRequest = new Intent(HomeClientActivity.this, MakeRequestActivity.class);
+        startActivity(makeRequest);
     }
 }

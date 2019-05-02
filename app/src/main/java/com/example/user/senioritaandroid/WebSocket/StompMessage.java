@@ -1,4 +1,4 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.WebSocket;
 
 import java.util.HashMap;
 import java.util.Map;

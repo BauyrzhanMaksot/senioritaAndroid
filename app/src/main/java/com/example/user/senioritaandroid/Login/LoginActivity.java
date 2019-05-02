@@ -1,7 +1,10 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.Login;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -10,6 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.user.senioritaandroid.Extra.Connection;
+import com.example.user.senioritaandroid.Client.HomeClientActivity;
+import com.example.user.senioritaandroid.Driver.HomeDriverActivity;
+import com.example.user.senioritaandroid.R;
+import com.example.user.senioritaandroid.Register.RegisterActivity;
+import com.example.user.senioritaandroid.Service.ApiService;
 import com.example.user.senioritaandroid.User.Token;
 import com.example.user.senioritaandroid.User.User;
 
@@ -21,24 +30,20 @@ import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.ResponseBody;
 import retrofit2.HttpException;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     Button loginB, registerB;
     EditText userNameE, passwordE;
-
+    Retrofit retrofit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        retrofit = (new Connection(LoginActivity.this)).getRetrofit();
         loginB = (Button) findViewById(R.id.button);
         userNameE = (EditText)findViewById(R.id.editText);
         passwordE = (EditText)findViewById(R.id.editText2);
@@ -58,35 +63,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean register() {
-        Intent register = new Intent(MainActivity.this, RegisterActivity.class);
+        Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(register);
         return true;
     }
 
     public Boolean login(String userName, String password) {
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                if (chain.request().header("noToken") == "true") {
-                    return chain.proceed(chain.request());
-                }
-                SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                String token = preferences.getString("token","");
-                Request newRequest = chain.request().newBuilder().addHeader("Authorization","Bearer "+token).build();
-                return chain.proceed(newRequest);
-            }
-        };
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(interceptor);
-        OkHttpClient client = builder.build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constant.SERVER)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(client)
-                .build();
         ApiService apiService = retrofit.create(ApiService.class);
-
         Single<Token> token = apiService.loginAccount("password", userName, password, getAuthorizationHeader(), "application/x-www-form-urlencoded; charset=utf-8",true);
         token.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -106,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        final android.support.v7.app.AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setMessage(R.string.login_error)
+                                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                    }
+                                });
+                        builder.show();
                         if (e instanceof HttpException) {
                             ResponseBody responseBody = ((HttpException)e).response().errorBody();
                             Log.e("ERRORLogin", e.toString());
@@ -123,29 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void redirectDriverClient() {
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                if (chain.request().header("noToken") == "true") {
-                    return chain.proceed(chain.request());
-                }
-                SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                String token = preferences.getString("token","");
-                Request newRequest = chain.request().newBuilder().addHeader("Authorization", "Bearer "+token).build();
-                return chain.proceed(newRequest);
-            }
-        };
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(interceptor);
-        OkHttpClient client = builder.build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constant.SERVER)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(client)
-                .build();
         ApiService apiService = retrofit.create(ApiService.class);
-
         Single<User> user = apiService.getUser();
         user.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -159,10 +127,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(User user) {
                         Log.v("User:", user.toString());
                         if (user.getRole().getId()==2) {
-                            Intent role = new Intent(MainActivity.this, HomeClientActivity.class);
+                            Intent role = new Intent(LoginActivity.this, HomeClientActivity.class);
                             startActivity(role);
                         } else {
-                            Intent role = new Intent(MainActivity.this, HomeDriverActivity.class);
+                            Intent role = new Intent(LoginActivity.this, HomeDriverActivity.class);
                             startActivity(role);
                         }
                     }

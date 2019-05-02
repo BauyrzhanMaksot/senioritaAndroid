@@ -1,4 +1,6 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.WebSocket;
+
+import com.example.user.senioritaandroid.WebSocket.StompMessage;
 
 import java.util.Map;
 

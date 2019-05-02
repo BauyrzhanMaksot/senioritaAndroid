@@ -1,4 +1,4 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.Extra;
 
 import com.example.user.senioritaandroid.User.User;
 import com.google.gson.annotations.Expose;

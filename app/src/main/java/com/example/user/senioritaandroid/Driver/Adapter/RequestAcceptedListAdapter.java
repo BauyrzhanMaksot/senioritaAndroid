@@ -11,11 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.user.senioritaandroid.ApiService;
+import com.example.user.senioritaandroid.Service.ApiService;
 import com.example.user.senioritaandroid.Client.Request;
-import com.example.user.senioritaandroid.Constant;
+import com.example.user.senioritaandroid.Extra.Constant;
 import com.example.user.senioritaandroid.Driver.Activity.AcceptedRequestsActivity;
-import com.example.user.senioritaandroid.Order;
+import com.example.user.senioritaandroid.Extra.Order;
 import com.example.user.senioritaandroid.R;
 import com.example.user.senioritaandroid.User.User;
 import com.google.gson.Gson;

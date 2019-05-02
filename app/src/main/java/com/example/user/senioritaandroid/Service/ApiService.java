@@ -1,7 +1,8 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.Service;
 
 import com.example.user.senioritaandroid.Client.Request;
 import com.example.user.senioritaandroid.Driver.Offer;
+import com.example.user.senioritaandroid.Extra.Order;
 import com.example.user.senioritaandroid.User.Street;
 import com.example.user.senioritaandroid.User.Token;
 import com.example.user.senioritaandroid.User.User;

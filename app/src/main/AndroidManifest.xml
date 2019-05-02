@@ -11,9 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Driver.Activity.MakeOfferActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Login.LoginErrorMessageDialog"></activity>
+        <activity android:name=".Driver.Activity.MakeOfferActivity" />
         <activity android:name=".Driver.Activity.ClientInfoActivity" />
         <activity android:name=".Client.Activity.MakeRequestActivity" />
         <activity android:name=".Client.Activity.DriverInfoActivity" />
@@ -21,15 +22,15 @@
         <activity android:name=".Client.Activity.HistoryClientActivity" />
         <activity android:name=".Client.Activity.AcceptedOffersActivity" />
         <activity android:name=".Client.Activity.CurrentOffersActivity" />
-        <activity android:name=".HomeClientActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Client.HomeClientActivity" />
+        <activity android:name=".Register.RegisterActivity" />
         <activity android:name=".Driver.Activity.MyOffersActivity" />
         <activity android:name=".Driver.Activity.AcceptedRequestsActivity" />
         <activity android:name=".Driver.Activity.HistoryActivity" />
-        <activity android:name=".HomeDriverActivity" />
+        <activity android:name=".Driver.HomeDriverActivity" />
         <activity android:name=".User.ProfileActivity" />
         <activity android:name=".Driver.Activity.CurrentRequestsActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

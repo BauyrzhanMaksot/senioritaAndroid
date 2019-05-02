@@ -4,4 +4,9 @@
         <item>Driver</item>
         <item>Client</item>
     </string-array>
+    <string name="login_error">The login or password is incorrect</string>
+    <string name="register_error">Could not register</string>
+    <string name="register_success">Registration link has been sent to your email.</string>
+    <string name="profile_update_error">Your profile has not been updated.</string>
+    <string name="ok">OK</string>
 </resources>

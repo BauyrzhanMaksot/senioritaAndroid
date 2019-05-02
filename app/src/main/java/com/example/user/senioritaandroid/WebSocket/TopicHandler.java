@@ -1,4 +1,7 @@
-package com.example.user.senioritaandroid;
+package com.example.user.senioritaandroid.WebSocket;
+
+import com.example.user.senioritaandroid.WebSocket.StompMessage;
+import com.example.user.senioritaandroid.WebSocket.StompMessageListener;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,6 +1,5 @@
 package com.example.user.senioritaandroid.Driver.Activity;
 
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,15 +9,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.user.senioritaandroid.ApiService;
-import com.example.user.senioritaandroid.Constant;
+import com.example.user.senioritaandroid.Extra.Connection;
+import com.example.user.senioritaandroid.Service.ApiService;
 import com.example.user.senioritaandroid.Driver.Offer;
 import com.example.user.senioritaandroid.R;
 import com.example.user.senioritaandroid.User.Street;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,53 +23,24 @@ import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MakeOfferActivity extends AppCompatActivity {
 
     AutoCompleteTextView pointA, pointB;
     EditText price;
     Button button;
+    Retrofit retrofit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_offer);
-
+        retrofit = (new Connection(MakeOfferActivity.this)).getRetrofit();
         getStreets();
     }
 
     public void getStreets() {
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                if (chain.request().header("noToken") == "true") {
-                    return chain.proceed(chain.request());
-                }
-                SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                String token = preferences.getString("token","");
-                Log.v("Token", token);
-                Request newRequest = chain.request().newBuilder().addHeader("Authorization", "Bearer "+token).build();
-                return chain.proceed(newRequest);
-            }
-        };
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(interceptor);
-        OkHttpClient client = builder.build();
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constant.SERVER)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(client)
-                .build();
         ApiService apiService = retrofit.create(ApiService.class);
         Single<List<Street>> streets = apiService.getStreets();
         streets.subscribeOn(Schedulers.io())
@@ -118,10 +85,17 @@ public class MakeOfferActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("MakeOffer", pointA.getText().toString());
-                if (pointA.getText().toString().isEmpty() || pointB.getText().toString().isEmpty() || price.getText().toString().isEmpty()) {
-                    //TODO show Error
+                if (pointA.getText().toString().isEmpty()) {
+                    pointA.setError("Point A can not be empty");
                     Log.v("MakeOffer","Inputs can not be empty");
-                } else if (streetsName.indexOf(pointA.getText().toString()) == -1 || streetsName.indexOf(pointB.getText().toString()) == -1) {
+                } else if (pointB.getText().toString().isEmpty()) {
+                    pointB.setError("Point B can not be empty");
+                } else if (price.getText().toString().isEmpty()) {
+                    price.setError("Price can not be empty");
+                } else if (streetsName.indexOf(pointA.getText().toString()) == -1) {
+                    pointA.setError("You entered wrong value");
+                } else if (streetsName.indexOf(pointB.getText().toString()) == -1) {
+                    pointB.setError("You entered wrong value");
                     Log.v("MakeOffer", "You entered wrong value");
                 } else {
                     makeOffer();
@@ -136,31 +110,7 @@ public class MakeOfferActivity extends AppCompatActivity {
         String pointB = this.pointB.getText().toString();
         String price  = this.price.getText().toString();
         Offer offer = new Offer(pointA, pointB, price);
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                if (chain.request().header("noToken") == "true") {
-                    return chain.proceed(chain.request());
-                }
-                SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                String token = preferences.getString("token","");
-                Log.v("Token", token);
-                Request newRequest = chain.request().newBuilder().addHeader("Authorization", "Bearer "+token).build();
-                return chain.proceed(newRequest);
-            }
-        };
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(interceptor);
-        OkHttpClient client = builder.build();
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constant.SERVER)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(client)
-                .build();
+
         ApiService apiService = retrofit.create(ApiService.class);
         Single<String> result = apiService.putOffer(offer);
         result.subscribeOn(Schedulers.io())
@@ -181,4 +131,5 @@ public class MakeOfferActivity extends AppCompatActivity {
                 });
         return true;
     }
+
 }

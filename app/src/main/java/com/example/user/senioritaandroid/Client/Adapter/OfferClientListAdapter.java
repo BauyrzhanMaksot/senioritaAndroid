@@ -13,11 +13,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.user.senioritaandroid.ApiService;
+import com.example.user.senioritaandroid.Service.ApiService;
 import com.example.user.senioritaandroid.Client.Activity.CurrentOffersActivity;
 import com.example.user.senioritaandroid.Client.Activity.DriverInfoActivity;
-import com.example.user.senioritaandroid.Constant;
-import com.example.user.senioritaandroid.Driver.Activity.AcceptedRequestsActivity;
+import com.example.user.senioritaandroid.Extra.Constant;
 import com.example.user.senioritaandroid.Driver.Offer;
 import com.example.user.senioritaandroid.R;
 import com.example.user.senioritaandroid.User.User;
